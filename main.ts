@@ -45,7 +45,7 @@ namespace WiFiBit {
      * Serijski poveži micro:bit i WiFi:bit.
      */
     //% weight=100
-    //% blockId="wfb_connect" block="poveži se s WiFi:bitom"
+    //% blockId="wfb_connect" block="connect WiFi:bitom"
     export function connectToWiFiBit(): void {
         serial.redirect(
             SerialPin.P16,
@@ -62,10 +62,10 @@ namespace WiFiBit {
     /**
      * Spoji se na WiFi mrežu.
      * @param ssid Naziv WiFi mreže, eg: "SSID"
-     * @param key Lozinka WiFi mreže, eg: "ključ"
+     * @param key Lozinka WiFi mreže, eg: "password"
      */
     //% weight=99
-    //% blockId="wfb_wifi_on" block="spoji se na WiFi mrežu %ssid, %key"
+    //% blockId="wfb_wifi_on" block="connect to WiFi mrežu %ssid, %key"
     export function connectToWiFiNetwork(ssid: string, key: string): void {
         // Connect to AP:
         writeToSerial("AT+CWJAP=\"" + ssid + "\",\"" + key + "\"", 6000)
@@ -75,7 +75,7 @@ namespace WiFiBit {
      * Odspoji se s WiFi mreže.
      */
     //% weight=98
-    //% blockId="wfb_wifi_off" block="odspoji se s WiFi mreže"
+    //% blockId="wfb_wifi_off" block="disconnect WiFi network"
     export function disconnectFromWiFiNetwork(): void {
         // Disconnect from AP:
         writeToSerial("AT+CWQAP", 6000)
@@ -87,7 +87,7 @@ namespace WiFiBit {
      * @param waitTime Pauza nakon naredbe, eg: 1000
      */
     //% weight=97
-    //% blockId="wfb_at" block="izvrši AT naredbu %command i zatim pričekaj %waitTime ms"
+    //% blockId="wfb_at" block="execute the AT command %command i zatim pričekaj %waitTime ms"
     export function executeAtCommand(command: string, waitTime: number): void {
         writeToSerial(command, waitTime)
     }
@@ -102,7 +102,7 @@ namespace WiFiBit {
      * @param body Tijelo
      */
     //% weight=96
-    //% blockId="wfb_http" block="izvrši HTTP metodu %method|server: %host|port: %port|putanja: %urlPath||zaglavlja: %headers|tijelo: %body"
+    //% blockId="wfb_http" block="execute the HTTP method %method|server: %host|port: %port|putanja: %urlPath||zaglavlja: %headers|tijelo: %body"
     export function executeHttpMethod(method: HttpMethod, host: string, port: number, urlPath: string, headers?: string, body?: string): void {
         let myMethod: string
         switch (method) {
